@@ -1,4 +1,4 @@
-# Major_Project-PR1107-
+# Major_Project-PR1107
 # HealthTwin — Digital Twin for Remote Patient Monitoring
 
 Major Project (PR1107), B.Tech CSAI, JK Lakshmipat University
