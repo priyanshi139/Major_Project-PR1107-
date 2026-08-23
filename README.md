@@ -10,7 +10,7 @@ Major Project (PR1107), B.Tech CSAI, JK Lakshmipat University
 HealthTwin is a digital twin system for predictive remote patient monitoring.
 It builds a continuously updated virtual model of a patient's vitals, uses a
 Transformer-based model to predict deterioration risk hours in advance, and
-raises alerts only when genuinely warranted — reducing false alarms while
+raises alerts only when genuinely warranted reducing false alarms while
 giving doctors a direct communication channel to reach the patient when
 needed.
 
