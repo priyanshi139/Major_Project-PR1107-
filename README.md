@@ -55,7 +55,4 @@ flowchart LR
 
 ## Dataset
 
-**Source:** [PhysioNet/CinC 2019 Sepsis Challenge](https://physionet.org/content/challenge-2019/1.0.0/)
-
-40,336 ICU patients (`training_setA` + `training_setB`), combined into 42-column
-hourly records. Full dataset is in [`dataset/healthtwin_sepsis_data/`](dataset/healthtwin_sepsis_data/)
+Sourced from [PhysioNet/CinC 2019 Sepsis Challenge](https://physionet.org/content/challenge-2019/1.0.0/).
