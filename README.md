@@ -14,6 +14,34 @@ raises alerts only when genuinely warranted reducing false alarms while
 giving doctors a direct communication channel to reach the patient when
 needed.
 
+## System Flow Diagram
+
+```mermaid
+flowchart LR
+    A[Vital-Sign Data Source<br/>ICU / Wearable] --> B[Preprocessing<br/>clean, resample, normalize]
+    B --> C[Digital Twin State<br/>feature vector]
+    C --> D[Transformer<br/>Prediction Model]
+    D --> E[Agentic<br/>Decision-Support Layer]
+    C --> F[(Local Storage<br/>patient history)]
+    E --> G[Urgent Alert]
+    E --> H[Soft Notify]
+    G --> I[Clinician Dashboard<br/>real-time view]
+    H --> I
+    F --> I
+    G --> J[Doctor–Patient Communication<br/>Secure Messaging + Video Call]
+    J --> I
+
+    style A fill:#dbe9ff,stroke:#4a7fd6
+    style B fill:#ffe6cc,stroke:#d68a4a
+    style C fill:#d9f2d9,stroke:#5cb85c
+    style D fill:#e6d9f7,stroke:#9b6ed6
+    style E fill:#f7d9e6,stroke:#d64a8a
+    style G fill:#ffd9d9,stroke:#d64a4a
+    style H fill:#fff2cc,stroke:#d6b84a
+    style I fill:#d9ecff,stroke:#4a9fd6
+    style J fill:#d9f7ec,stroke:#4ad69b
+```
+
 ## Literature Review
 
 | Paper | Focus | Link |
@@ -25,4 +53,9 @@ needed.
 | Jameil & Al-Raweshidy — A Digital Twin Framework for Real-Time Healthcare Monitoring | Digital twin + ML (MLP/XGBoost) on MIMIC-III, closest methodological match | [PDF](https://bura.brunel.ac.uk/bitstream/2438/31182/3/FullText.pdf) |
 | Enhancing Healthcare through Sensor-Enabled Digital Twins in Smart Environments | IoT + ML + telemedicine/remote-monitoring | [Link](https://pmc.ncbi.nlm.nih.gov/articles/PMC11086215/) |
 
-Dataset: https://physionet.org/content/challenge-2012/1.0.0/
+## Dataset
+
+**Source:** [PhysioNet/CinC 2019 Sepsis Challenge](https://physionet.org/content/challenge-2019/1.0.0/)
+
+40,336 ICU patients (`training_setA` + `training_setB`), combined into 42-column
+hourly records. Full dataset is in [`dataset/healthtwin_sepsis_data/`](dataset/healthtwin_sepsis_data/)
