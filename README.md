@@ -13,8 +13,6 @@
 
 🫀 **Sepsis** · 🩸 **Type 2 Diabetes** · ❤️ **Cardiovascular** · 🩺 **Hypertension**
 
-<img src="docs/assets/healthtwin_poster.png" alt="HealthTwin poster" width="900">
-
 </div>
 
 ---
