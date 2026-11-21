@@ -8,7 +8,8 @@ from src.utils.provenance import check_gate, read_manifest
 from src.utils.logging_utils import get_logger
 
 log = get_logger("env_check")
-PKGS = ["numpy", "pandas", "sklearn", "joblib", "yaml", "streamlit", "plotly", "wfdb", "pytest", "pyarrow", "matplotlib", "shap", "requests", "torch"]
+PKGS = ["numpy", "pandas", "sklearn", "joblib", "yaml", "streamlit", "plotly", "wfdb", "pytest", "pyarrow", "matplotlib", "shap", "requests"]
+OPTIONAL = ["torch"]  # only needed to train the Transformer/LSTM
 
 
 def main():
@@ -21,6 +22,11 @@ def main():
         except Exception as e:
             ok = False
             log.error("MISSING %s (%s)", p, e)
+    for p in OPTIONAL:
+        try:
+            importlib.import_module(p); log.info("OK   %-10s (optional, training only)", p)
+        except Exception:
+            log.info("skip %-10s (optional, training only)", p)
     cfg = load_config()
     for ds in cfg["datasets"]:
         d = dataset_raw_dir(cfg, ds)

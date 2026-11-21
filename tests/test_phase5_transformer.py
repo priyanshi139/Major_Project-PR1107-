@@ -1,6 +1,7 @@
 import numpy as np
 import pandas as pd
-import torch
+import pytest
+torch = pytest.importorskip('torch')  # torch is only needed for training (requirements-train.txt)
 from src.models.causal_transformer import CausalTransformer, make_patient_windows
 
 

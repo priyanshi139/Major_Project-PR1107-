@@ -1,0 +1,2 @@
+-r requirements.txt
+torch>=2.2,<3       # only for training the causal Transformer / LSTM (scripts/train_causal_transformer.py); the app does not need it
