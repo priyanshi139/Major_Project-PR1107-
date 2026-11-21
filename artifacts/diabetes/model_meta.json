@@ -1,0 +1,71 @@
+{
+ "disease": "diabetes",
+ "disease_name": "Type 2 Diabetes",
+ "dataset": "Pima Indians Diabetes Database (NIDDK/UCI), 768 women aged >= 21 of Pima heritage",
+ "task": "Diabetes diagnosis within 5 years of the baseline examination (binary label as provided)",
+ "selected_model": "gradient_boosting",
+ "selection_rule": "highest 5-fold CV AUROC on the training split",
+ "seed": 42,
+ "threshold": 0.24260262319695694,
+ "threshold_rule": "maximum F1 on validation split (calibrated probabilities)",
+ "calibration": "Platt scaling on validation split",
+ "features": [
+  "Pregnancies",
+  "Glucose",
+  "BloodPressure",
+  "SkinThickness",
+  "Insulin",
+  "BMI",
+  "DiabetesPedigreeFunction",
+  "Age"
+ ],
+ "n_rows": 768,
+ "n_positive": 268,
+ "prevalence": 0.3489583333333333,
+ "split_sizes": {
+  "train": 537,
+  "val": 115,
+  "test": 116
+ },
+ "limitations": [
+  "Only 768 women of a single ancestry: not representative of men or other populations.",
+  "Zeros in glucose, blood pressure, skin-fold, insulin and BMI are physiologically impossible and are treated as missing.",
+  "Small test set (about 115 people): wide confidence intervals."
+ ],
+ "versions": {
+  "python": "3.13.18",
+  "numpy": "2.5.4",
+  "pandas": "2.3.3",
+  "scikit-learn": "1.6.1"
+ },
+ "disclaimer": "Academic prototype. Risk score is NOT a diagnosis and is not clinically validated.",
+ "trained_at": "2026-11-15T18:49:55+00:00",
+ "pipeline_version": "v4.1-phase1",
+ "provenance": {
+  "data_origin": "real_public",
+  "source": "public GitHub mirrors (see per-file URLs)",
+  "recorded_at": "2026-11-15T18:49:48+00:00",
+  "files": {
+   "pima_diabetes.csv": {
+    "sha256": "bf81d06e0c0512662862248241ab46d7c29258c6ceaad32f3cab56b52a17fdab",
+    "url": "https://raw.githubusercontent.com/plotly/datasets/master/diabetes.csv"
+   },
+   "framingham.csv": {
+    "sha256": "def05ef246f93025f0a76fe45b9b6146469eb504492f4a4eeaf1504cf2bff722",
+    "url": "https://raw.githubusercontent.com/GauravPadawe/Framingham-Heart-Study/master/framingham.csv"
+   }
+  },
+  "file": "pima_diabetes.csv",
+  "file_sha256": "bf81d06e0c0512662862248241ab46d7c29258c6ceaad32f3cab56b52a17fdab"
+ },
+ "dataset_check": {
+  "rows": 768,
+  "positives": 268,
+  "expected_rows_positives": [
+   768,
+   268
+  ],
+  "matches_published": true,
+  "warning": null
+ }
+}

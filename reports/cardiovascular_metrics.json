@@ -1,0 +1,231 @@
+{
+ "meta": {
+  "disease": "cardiovascular",
+  "disease_name": "Cardiovascular disease (10-year CHD)",
+  "dataset": "Framingham Heart Study teaching subset (4,240 participants), public mirror",
+  "task": "10-year risk of coronary heart disease from baseline risk factors",
+  "selected_model": "logistic_regression",
+  "selection_rule": "highest 5-fold CV AUROC on the training split",
+  "seed": 42,
+  "threshold": 0.16265059434658866,
+  "threshold_rule": "maximum F1 on validation split (calibrated probabilities)",
+  "calibration": "Platt scaling on validation split",
+  "features": [
+   "male",
+   "age",
+   "education",
+   "currentSmoker",
+   "cigsPerDay",
+   "prevalentStroke",
+   "diabetes",
+   "totChol",
+   "BMI",
+   "heartRate",
+   "glucose",
+   "sysBP",
+   "diaBP",
+   "BPMeds",
+   "prevalentHyp"
+  ],
+  "n_rows": 4240,
+  "n_positive": 644,
+  "prevalence": 0.15188679245283018,
+  "split_sizes": {
+   "train": 2968,
+   "val": 636,
+   "test": 636
+  },
+  "limitations": [
+   "Teaching subset of a 1940s-70s US cohort: not representative of present-day or Indian populations.",
+   "Missing values (glucose ~9%) are median-imputed with training medians.",
+   "Predicts a 10-year outcome from one baseline exam; it is not a diagnostic test."
+  ],
+  "versions": {
+   "python": "3.13.18",
+   "numpy": "2.5.4",
+   "pandas": "2.3.3",
+   "scikit-learn": "1.6.1"
+  },
+  "disclaimer": "Academic prototype. Risk score is NOT a diagnosis and is not clinically validated.",
+  "trained_at": "2026-11-15T18:50:07+00:00",
+  "pipeline_version": "v4.1-phase1",
+  "provenance": {
+   "data_origin": "real_public",
+   "source": "public GitHub mirrors (see per-file URLs)",
+   "recorded_at": "2026-11-15T18:49:48+00:00",
+   "files": {
+    "pima_diabetes.csv": {
+     "sha256": "bf81d06e0c0512662862248241ab46d7c29258c6ceaad32f3cab56b52a17fdab",
+     "url": "https://raw.githubusercontent.com/plotly/datasets/master/diabetes.csv"
+    },
+    "framingham.csv": {
+     "sha256": "def05ef246f93025f0a76fe45b9b6146469eb504492f4a4eeaf1504cf2bff722",
+     "url": "https://raw.githubusercontent.com/GauravPadawe/Framingham-Heart-Study/master/framingham.csv"
+    }
+   },
+   "file": "framingham.csv",
+   "file_sha256": "def05ef246f93025f0a76fe45b9b6146469eb504492f4a4eeaf1504cf2bff722"
+  },
+  "dataset_check": {
+   "rows": 4240,
+   "positives": 644,
+   "expected_rows_positives": [
+    4240,
+    644
+   ],
+   "matches_published": true,
+   "warning": null
+  }
+ },
+ "cv_selection": {
+  "logistic_regression": {
+   "cv_auroc_mean": 0.7369210277609881,
+   "cv_auroc_sd": 0.020664878904436683
+  },
+  "random_forest": {
+   "cv_auroc_mean": 0.715726398628983,
+   "cv_auroc_sd": 0.01600093410907647
+  },
+  "gradient_boosting": {
+   "cv_auroc_mean": 0.7253094157211122,
+   "cv_auroc_sd": 0.01830880294372514
+  }
+ },
+ "other_candidates_test": {
+  "logistic_regression": {
+   "test_auroc": 0.6970871913580247,
+   "test_auprc": 0.32631235629358357
+  },
+  "random_forest": {
+   "test_auroc": 0.6870563271604939,
+   "test_auprc": 0.3477493788945639
+  },
+  "gradient_boosting": {
+   "test_auroc": 0.6783757716049382,
+   "test_auprc": 0.30464046951384977
+  }
+ },
+ "results": {
+  "val": {
+   "n_rows": 636,
+   "n_positive_rows": 97,
+   "prevalence": 0.15251572327044025,
+   "auroc": 0.7029818487844998,
+   "auprc": 0.27531373401388265,
+   "auprc_random_baseline": 0.15251572327044025,
+   "threshold": 0.16265059434658866,
+   "precision": 0.26495726495726496,
+   "recall": 0.6391752577319587,
+   "f1": 0.37462235649546827,
+   "confusion_matrix": {
+    "tn": 367,
+    "fp": 172,
+    "fn": 35,
+    "tp": 62
+   },
+   "brier": 0.12186318198269594,
+   "calibration": {
+    "mean_predicted": [
+     0.04616569297844774,
+     0.06553567356369963,
+     0.08268326043654373,
+     0.10100869038866997,
+     0.11908464549141964,
+     0.14226088625267463,
+     0.1665159394718114,
+     0.19756623702253415,
+     0.24572145192259512,
+     0.35951413341889954
+    ],
+    "fraction_positive": [
+     0.015625,
+     0.078125,
+     0.047619047619047616,
+     0.0625,
+     0.19047619047619047,
+     0.15625,
+     0.15873015873015872,
+     0.296875,
+     0.20634920634920634,
+     0.3125
+    ]
+   }
+  },
+  "test": {
+   "n_rows": 636,
+   "n_positive_rows": 96,
+   "prevalence": 0.1509433962264151,
+   "auroc": 0.6970871913580247,
+   "auprc": 0.32631235629358357,
+   "auprc_random_baseline": 0.1509433962264151,
+   "threshold": 0.16265059434658866,
+   "precision": 0.2523364485981308,
+   "recall": 0.5625,
+   "f1": 0.34838709677419355,
+   "confusion_matrix": {
+    "tn": 380,
+    "fp": 160,
+    "fn": 42,
+    "tp": 54
+   },
+   "brier": 0.11814306401626372,
+   "calibration": {
+    "mean_predicted": [
+     0.046371292854298536,
+     0.06276383329689982,
+     0.07998150970169883,
+     0.09692267625838293,
+     0.11422895196165911,
+     0.1349841143720549,
+     0.15902036571085174,
+     0.19051275801321374,
+     0.2426786031819279,
+     0.3561104442400933
+    ],
+    "fraction_positive": [
+     0.0625,
+     0.0625,
+     0.09523809523809523,
+     0.03125,
+     0.1746031746031746,
+     0.09375,
+     0.2222222222222222,
+     0.125,
+     0.2698412698412698,
+     0.375
+    ]
+   },
+   "auroc_ci95": [
+    0.6355156718375423,
+    0.7517160810254052
+   ],
+   "auprc_ci95": [
+    0.24520103607736296,
+    0.427764663870968
+   ]
+  }
+ },
+ "subgroups_test": {
+  "age<50": {
+   "n": 358,
+   "prevalence": 0.10335195530726257,
+   "auroc": 0.6831691504588701
+  },
+  "age>=50": {
+   "n": 278,
+   "prevalence": 0.21223021582733814,
+   "auroc": 0.6507236282021516
+  },
+  "female": {
+   "n": 363,
+   "prevalence": 0.11019283746556474,
+   "auroc": 0.6357585139318884
+  },
+  "male": {
+   "n": 273,
+   "prevalence": 0.20512820512820512,
+   "auroc": 0.728439763001975
+  }
+ },
+ "warnings": []
+}

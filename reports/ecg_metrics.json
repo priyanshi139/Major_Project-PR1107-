@@ -1,0 +1,483 @@
+{
+ "meta": {
+  "selected_model": "hist_gradient_boosting",
+  "selection_rule": "highest validation macro-F1",
+  "seed": 42,
+  "splits": {
+   "train": [
+    "106",
+    "108",
+    "109",
+    "112",
+    "115",
+    "116",
+    "118",
+    "119",
+    "124",
+    "201",
+    "203",
+    "205",
+    "208",
+    "209",
+    "215",
+    "220",
+    "230"
+   ],
+   "val": [
+    "101",
+    "114",
+    "122",
+    "207",
+    "223"
+   ],
+   "test": [
+    "100",
+    "103",
+    "105",
+    "111",
+    "113",
+    "117",
+    "121",
+    "123",
+    "200",
+    "202",
+    "210",
+    "212",
+    "213",
+    "214",
+    "219",
+    "221",
+    "222",
+    "228",
+    "231",
+    "232",
+    "233",
+    "234"
+   ]
+  },
+  "n_train_beats_after_cap": 24207,
+  "max_n_train_N_beats": 20000,
+  "train_class_counts": {
+   "N": 20000,
+   "S": 749,
+   "V": 3062,
+   "F": 396
+  },
+  "python": "3.13.16",
+  "scikit-learn": "1.6.1",
+  "disclaimer": "Academic prototype. Beat-level classification of MIT-BIH records; not a diagnostic tool.",
+  "trained_at": "2026-11-15T18:44:46+00:00",
+  "pipeline_version": "v4.1-phase1",
+  "provenance": {
+   "data_origin": "real_public",
+   "source": "https://physionet.org/content/mitdb/1.0.0/",
+   "recorded_at": "2026-11-15T18:44:22+00:00",
+   "dataset": "MIT-BIH Arrhythmia Database",
+   "records_present": 48
+  }
+ },
+ "results": {
+  "logistic_regression": {
+   "val": {
+    "per_class": {
+     "N": {
+      "precision": 0.9514646754738656,
+      "recall": 0.6802176367929371,
+      "f1": 0.7932954205327746,
+      "support": 9741
+     },
+     "S": {
+      "precision": 0.5909090909090909,
+      "recall": 0.2,
+      "f1": 0.2988505747126437,
+      "support": 195
+     },
+     "V": {
+      "precision": 0.17718191377497372,
+      "recall": 0.4641873278236915,
+      "f1": 0.256468797564688,
+      "support": 726
+     },
+     "F": {
+      "precision": 0.005148741418764302,
+      "recall": 0.5,
+      "f1": 0.010192525481313703,
+      "support": 18
+     }
+    },
+    "macro_f1_present_classes": 0.339701829572855,
+    "balanced_accuracy": 0.4611012411541571,
+    "accuracy_not_headline": 0.6564606741573034,
+    "confusion_matrix": {
+     "labels": [
+      "N",
+      "S",
+      "V",
+      "F"
+     ],
+     "matrix": [
+      [
+       6626,
+       19,
+       1451,
+       1645
+      ],
+      [
+       29,
+       39,
+       107,
+       20
+      ],
+      [
+       307,
+       8,
+       337,
+       74
+      ],
+      [
+       2,
+       0,
+       7,
+       9
+      ]
+     ]
+    },
+    "n_beats": 10680
+   },
+   "test": {
+    "per_class": {
+     "N": {
+      "precision": 0.9562655789712214,
+      "recall": 0.7630240705164425,
+      "f1": 0.848785025581717,
+      "support": 44245
+     },
+     "S": {
+      "precision": 0.1640014875418371,
+      "recall": 0.24006532389765922,
+      "f1": 0.1948740609809987,
+      "support": 1837
+     },
+     "V": {
+      "precision": 0.8512898330804249,
+      "recall": 0.8711180124223602,
+      "f1": 0.8610897927858787,
+      "support": 3220
+     },
+     "F": {
+      "precision": 0.02297072125684361,
+      "recall": 0.49742268041237114,
+      "f1": 0.04391353811149033,
+      "support": 388
+     }
+    },
+    "macro_f1_present_classes": 0.48716560436502115,
+    "balanced_accuracy": 0.5929075218122083,
+    "accuracy_not_headline": 0.7486214530086537,
+    "confusion_matrix": {
+     "labels": [
+      "N",
+      "S",
+      "V",
+      "F"
+     ],
+     "matrix": [
+      [
+       33760,
+       2170,
+       341,
+       7974
+      ],
+      [
+       1275,
+       441,
+       34,
+       87
+      ],
+      [
+       195,
+       72,
+       2805,
+       148
+      ],
+      [
+       74,
+       6,
+       115,
+       193
+      ]
+     ]
+    },
+    "n_beats": 49690
+   }
+  },
+  "hist_gradient_boosting": {
+   "val": {
+    "per_class": {
+     "N": {
+      "precision": 0.9653582274209875,
+      "recall": 0.8811210348013551,
+      "f1": 0.9213181623014169,
+      "support": 9741
+     },
+     "S": {
+      "precision": 0.010460251046025104,
+      "recall": 0.02564102564102564,
+      "f1": 0.014858841010401188,
+      "support": 195
+     },
+     "V": {
+      "precision": 0.46595744680851064,
+      "recall": 0.6033057851239669,
+      "f1": 0.5258103241296519,
+      "support": 726
+     },
+     "F": {
+      "precision": 0.0026954177897574125,
+      "recall": 0.05555555555555555,
+      "f1": 0.005141388174807198,
+      "support": 18
+     }
+    },
+    "macro_f1_present_classes": 0.36678217890406933,
+    "balanced_accuracy": 0.3914058502804758,
+    "accuracy_not_headline": 0.8452247191011236,
+    "confusion_matrix": {
+     "labels": [
+      "N",
+      "S",
+      "V",
+      "F"
+     ],
+     "matrix": [
+      [
+       8583,
+       471,
+       383,
+       304
+      ],
+      [
+       78,
+       5,
+       111,
+       1
+      ],
+      [
+       221,
+       2,
+       438,
+       65
+      ],
+      [
+       9,
+       0,
+       8,
+       1
+      ]
+     ]
+    },
+    "n_beats": 10680
+   },
+   "test": {
+    "per_class": {
+     "N": {
+      "precision": 0.9583410053397164,
+      "recall": 0.941078087919539,
+      "f1": 0.9496310994036012,
+      "support": 44245
+     },
+     "S": {
+      "precision": 0.2506437768240343,
+      "recall": 0.15895481763745237,
+      "f1": 0.19453697534976683,
+      "support": 1837
+     },
+     "V": {
+      "precision": 0.8653097874887759,
+      "recall": 0.8978260869565218,
+      "f1": 0.8812680993750953,
+      "support": 3220
+     },
+     "F": {
+      "precision": 0.10138248847926268,
+      "recall": 0.4536082474226804,
+      "f1": 0.1657250470809793,
+      "support": 388
+     }
+    },
+    "macro_f1_present_classes": 0.5477903053023606,
+    "balanced_accuracy": 0.6128668099840484,
+    "accuracy_not_headline": 0.905554437512578,
+    "confusion_matrix": {
+     "labels": [
+      "N",
+      "S",
+      "V",
+      "F"
+     ],
+     "matrix": [
+      [
+       41638,
+       851,
+       259,
+       1497
+      ],
+      [
+       1354,
+       292,
+       161,
+       30
+      ],
+      [
+       275,
+       21,
+       2891,
+       33
+      ],
+      [
+       181,
+       1,
+       30,
+       176
+      ]
+     ]
+    },
+    "n_beats": 49690
+   }
+  },
+  "baseline_always_N": {
+   "val": {
+    "per_class": {
+     "N": {
+      "precision": 0.9120786516853933,
+      "recall": 1.0,
+      "f1": 0.954017922726605,
+      "support": 9741
+     },
+     "S": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 195
+     },
+     "V": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 726
+     },
+     "F": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 18
+     }
+    },
+    "macro_f1_present_classes": 0.23850448068165125,
+    "balanced_accuracy": 0.25,
+    "accuracy_not_headline": 0.9120786516853933,
+    "confusion_matrix": {
+     "labels": [
+      "N",
+      "S",
+      "V",
+      "F"
+     ],
+     "matrix": [
+      [
+       9741,
+       0,
+       0,
+       0
+      ],
+      [
+       195,
+       0,
+       0,
+       0
+      ],
+      [
+       726,
+       0,
+       0,
+       0
+      ],
+      [
+       18,
+       0,
+       0,
+       0
+      ]
+     ]
+    },
+    "n_beats": 10680
+   },
+   "test": {
+    "per_class": {
+     "N": {
+      "precision": 0.8904206077681626,
+      "recall": 1.0,
+      "f1": 0.9420343854793208,
+      "support": 44245
+     },
+     "S": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 1837
+     },
+     "V": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 3220
+     },
+     "F": {
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "support": 388
+     }
+    },
+    "macro_f1_present_classes": 0.2355085963698302,
+    "balanced_accuracy": 0.25,
+    "accuracy_not_headline": 0.8904206077681626,
+    "confusion_matrix": {
+     "labels": [
+      "N",
+      "S",
+      "V",
+      "F"
+     ],
+     "matrix": [
+      [
+       44245,
+       0,
+       0,
+       0
+      ],
+      [
+       1837,
+       0,
+       0,
+       0
+      ],
+      [
+       3220,
+       0,
+       0,
+       0
+      ],
+      [
+       388,
+       0,
+       0,
+       0
+      ]
+     ]
+    },
+    "n_beats": 49690
+   }
+  }
+ }
+}

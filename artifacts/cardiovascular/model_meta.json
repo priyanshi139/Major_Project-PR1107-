@@ -1,0 +1,78 @@
+{
+ "disease": "cardiovascular",
+ "disease_name": "Cardiovascular disease (10-year CHD)",
+ "dataset": "Framingham Heart Study teaching subset (4,240 participants), public mirror",
+ "task": "10-year risk of coronary heart disease from baseline risk factors",
+ "selected_model": "logistic_regression",
+ "selection_rule": "highest 5-fold CV AUROC on the training split",
+ "seed": 42,
+ "threshold": 0.16265059434658866,
+ "threshold_rule": "maximum F1 on validation split (calibrated probabilities)",
+ "calibration": "Platt scaling on validation split",
+ "features": [
+  "male",
+  "age",
+  "education",
+  "currentSmoker",
+  "cigsPerDay",
+  "prevalentStroke",
+  "diabetes",
+  "totChol",
+  "BMI",
+  "heartRate",
+  "glucose",
+  "sysBP",
+  "diaBP",
+  "BPMeds",
+  "prevalentHyp"
+ ],
+ "n_rows": 4240,
+ "n_positive": 644,
+ "prevalence": 0.15188679245283018,
+ "split_sizes": {
+  "train": 2968,
+  "val": 636,
+  "test": 636
+ },
+ "limitations": [
+  "Teaching subset of a 1940s-70s US cohort: not representative of present-day or Indian populations.",
+  "Missing values (glucose ~9%) are median-imputed with training medians.",
+  "Predicts a 10-year outcome from one baseline exam; it is not a diagnostic test."
+ ],
+ "versions": {
+  "python": "3.13.18",
+  "numpy": "2.5.4",
+  "pandas": "2.3.3",
+  "scikit-learn": "1.6.1"
+ },
+ "disclaimer": "Academic prototype. Risk score is NOT a diagnosis and is not clinically validated.",
+ "trained_at": "2026-11-15T18:50:07+00:00",
+ "pipeline_version": "v4.1-phase1",
+ "provenance": {
+  "data_origin": "real_public",
+  "source": "public GitHub mirrors (see per-file URLs)",
+  "recorded_at": "2026-11-15T18:49:48+00:00",
+  "files": {
+   "pima_diabetes.csv": {
+    "sha256": "bf81d06e0c0512662862248241ab46d7c29258c6ceaad32f3cab56b52a17fdab",
+    "url": "https://raw.githubusercontent.com/plotly/datasets/master/diabetes.csv"
+   },
+   "framingham.csv": {
+    "sha256": "def05ef246f93025f0a76fe45b9b6146469eb504492f4a4eeaf1504cf2bff722",
+    "url": "https://raw.githubusercontent.com/GauravPadawe/Framingham-Heart-Study/master/framingham.csv"
+   }
+  },
+  "file": "framingham.csv",
+  "file_sha256": "def05ef246f93025f0a76fe45b9b6146469eb504492f4a4eeaf1504cf2bff722"
+ },
+ "dataset_check": {
+  "rows": 4240,
+  "positives": 644,
+  "expected_rows_positives": [
+   4240,
+   644
+  ],
+  "matches_published": true,
+  "warning": null
+ }
+}

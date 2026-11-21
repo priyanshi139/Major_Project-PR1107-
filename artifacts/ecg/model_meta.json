@@ -1,0 +1,77 @@
+{
+ "selected_model": "hist_gradient_boosting",
+ "selection_rule": "highest validation macro-F1",
+ "seed": 42,
+ "splits": {
+  "train": [
+   "106",
+   "108",
+   "109",
+   "112",
+   "115",
+   "116",
+   "118",
+   "119",
+   "124",
+   "201",
+   "203",
+   "205",
+   "208",
+   "209",
+   "215",
+   "220",
+   "230"
+  ],
+  "val": [
+   "101",
+   "114",
+   "122",
+   "207",
+   "223"
+  ],
+  "test": [
+   "100",
+   "103",
+   "105",
+   "111",
+   "113",
+   "117",
+   "121",
+   "123",
+   "200",
+   "202",
+   "210",
+   "212",
+   "213",
+   "214",
+   "219",
+   "221",
+   "222",
+   "228",
+   "231",
+   "232",
+   "233",
+   "234"
+  ]
+ },
+ "n_train_beats_after_cap": 24207,
+ "max_n_train_N_beats": 20000,
+ "train_class_counts": {
+  "N": 20000,
+  "S": 749,
+  "V": 3062,
+  "F": 396
+ },
+ "python": "3.13.16",
+ "scikit-learn": "1.6.1",
+ "disclaimer": "Academic prototype. Beat-level classification of MIT-BIH records; not a diagnostic tool.",
+ "trained_at": "2026-11-15T18:44:46+00:00",
+ "pipeline_version": "v4.1-phase1",
+ "provenance": {
+  "data_origin": "real_public",
+  "source": "https://physionet.org/content/mitdb/1.0.0/",
+  "recorded_at": "2026-11-15T18:44:22+00:00",
+  "dataset": "MIT-BIH Arrhythmia Database",
+  "records_present": 48
+ }
+}

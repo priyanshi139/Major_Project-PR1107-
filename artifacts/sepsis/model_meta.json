@@ -1,0 +1,36 @@
+{
+ "selected_model": "logistic_regression",
+ "selection_rule": "highest validation AUPRC",
+ "seed": 42,
+ "threshold": 0.8672006174527984,
+ "n_features": 100,
+ "versions": {
+  "python": "3.13.16",
+  "numpy": "2.4.6",
+  "pandas": "2.2.3",
+  "scikit-learn": "1.6.1",
+  "joblib": "1.6.0"
+ },
+ "split_patients": {
+  "train": 4200,
+  "val": 900,
+  "test": 900
+ },
+ "label_note": "SepsisLabel as provided by the PhysioNet 2019 dataset (row-level, hourly).",
+ "trained_at": "2026-11-15T18:41:26+00:00",
+ "pipeline_version": "v4.1-phase1",
+ "n_patients": 6000,
+ "n_rows": 230293,
+ "provenance": {
+  "data_origin": "real_public",
+  "source": "https://physionet.org/files/challenge-2019/1.0.0/training/",
+  "recorded_at": "2026-11-15T18:40:23+00:00",
+  "dataset": "PhysioNet/CinC Challenge 2019",
+  "files_present": {
+   "A": 3000,
+   "B": 3000
+  },
+  "note": "Files fetched by scripts/download_sepsis.py from physionet.org"
+ },
+ "disclaimer": "Academic prototype. Risk score is NOT a diagnosis and is not clinically validated."
+}

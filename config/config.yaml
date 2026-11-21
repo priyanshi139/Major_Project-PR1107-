@@ -1,0 +1,49 @@
+project:
+  name: HealthTwin
+  seed: 42
+  disclaimer: "Academic prototype. Not a medical device. Not clinically validated. Not for diagnosis or treatment."
+paths:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  sample_dir: data/sample
+  artifacts_dir: artifacts
+  reports_dir: reports
+  database: artifacts/healthtwin.db
+datasets:
+  sepsis:
+    namespace: sepsis
+    source_url: https://physionet.org/content/challenge-2019/1.0.0/
+    raw_subdir: physionet_challenge_2019
+  ecg:
+    namespace: ecg
+    source_url: https://physionet.org/content/mitdb/
+    raw_subdir: mitdb
+  glucose:
+    namespace: glucose
+    source_url: https://physionet.org/content/cgmacros/
+    raw_subdir: cgmacros
+sepsis:
+  label_col: SepsisLabel
+  split:
+    train_frac: 0.70
+    val_frac: 0.15
+    test_frac: 0.15
+    stratify_by_patient_outcome: true
+  preprocessing:
+    forward_fill: true        # causal: uses only past values within the same patient
+    add_missing_indicators: true
+    missing_indicator_max_missing_rate: 0.999
+alerts:
+  critical_threshold: 0.90     # prototype rule, NOT medically approved
+  cooldown_hours: 6            # duplicate suppression window (simulated hours)
+  escalate_after_hours: 3      # unacknowledged critical alerts -> 'escalated' for human review
+  risk_rise_delta: 0.20        # model-trend rule: score rise within the window ...
+  risk_rise_window: 3          # ... of this many observations
+  risk_rise_min_score: 0.25
+  multi_vital_min: 2           # vitals unusual versus the patient's own baseline at the same time
+anomaly:
+  z_threshold: 3.0
+  window: 24
+  min_points: 6
+replay:
+  base_interval_seconds: 1.0   # seconds per simulated hour at speed 1.0

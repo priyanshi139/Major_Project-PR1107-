@@ -1,0 +1,74 @@
+{
+ "disease": "hypertension",
+ "disease_name": "Hypertension (screening)",
+ "dataset": "Framingham Heart Study teaching subset (4,240 participants), public mirror",
+ "task": "Prevalent hypertension at baseline predicted from NON-blood-pressure risk factors (BP readings and BP medication excluded to avoid label leakage)",
+ "selected_model": "logistic_regression",
+ "selection_rule": "highest 5-fold CV AUROC on the training split",
+ "seed": 42,
+ "threshold": 0.2735077894201562,
+ "threshold_rule": "maximum F1 on validation split (calibrated probabilities)",
+ "calibration": "Platt scaling on validation split",
+ "features": [
+  "male",
+  "age",
+  "education",
+  "currentSmoker",
+  "cigsPerDay",
+  "prevalentStroke",
+  "diabetes",
+  "totChol",
+  "BMI",
+  "heartRate",
+  "glucose"
+ ],
+ "n_rows": 4240,
+ "n_positive": 1317,
+ "prevalence": 0.3106132075471698,
+ "split_sizes": {
+  "train": 2968,
+  "val": 636,
+  "test": 636
+ },
+ "limitations": [
+  "Cross-sectional screening estimate (is hypertension likely present?), not a prediction of future hypertension.",
+  "Blood-pressure readings are deliberately excluded; a real BP measurement is always the proper test.",
+  "Same cohort limitations as the cardiovascular model."
+ ],
+ "versions": {
+  "python": "3.13.18",
+  "numpy": "2.5.4",
+  "pandas": "2.3.3",
+  "scikit-learn": "1.6.1"
+ },
+ "disclaimer": "Academic prototype. Risk score is NOT a diagnosis and is not clinically validated.",
+ "trained_at": "2026-11-15T18:50:18+00:00",
+ "pipeline_version": "v4.1-phase1",
+ "provenance": {
+  "data_origin": "real_public",
+  "source": "public GitHub mirrors (see per-file URLs)",
+  "recorded_at": "2026-11-15T18:49:48+00:00",
+  "files": {
+   "pima_diabetes.csv": {
+    "sha256": "bf81d06e0c0512662862248241ab46d7c29258c6ceaad32f3cab56b52a17fdab",
+    "url": "https://raw.githubusercontent.com/plotly/datasets/master/diabetes.csv"
+   },
+   "framingham.csv": {
+    "sha256": "def05ef246f93025f0a76fe45b9b6146469eb504492f4a4eeaf1504cf2bff722",
+    "url": "https://raw.githubusercontent.com/GauravPadawe/Framingham-Heart-Study/master/framingham.csv"
+   }
+  },
+  "file": "framingham.csv",
+  "file_sha256": "def05ef246f93025f0a76fe45b9b6146469eb504492f4a4eeaf1504cf2bff722"
+ },
+ "dataset_check": {
+  "rows": 4240,
+  "positives": 1317,
+  "expected_rows_positives": [
+   4240,
+   1317
+  ],
+  "matches_published": true,
+  "warning": null
+ }
+}

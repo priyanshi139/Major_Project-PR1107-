@@ -1,0 +1,18 @@
+numpy>=1.26,<3
+pandas>=2.1,<3
+scikit-learn==1.6.1   # pinned: saved model files (joblib) are only safe to load with the version they were trained with
+joblib>=1.3
+pyarrow>=14.0        # parquet files written by prepare_sepsis_data.py
+matplotlib>=3.8      # evaluation plots
+pyyaml>=6.0
+streamlit>=1.35
+plotly>=5.20
+wfdb>=4.1
+shap>=0.45
+requests>=2.31
+pytest>=8.0
+torch>=2.2,<3       # causal Transformer and LSTM sequence models
+fastapi>=0.110
+uvicorn>=0.29
+PyJWT>=2.8
+httpx>=0.27     # FastAPI TestClient (tests)

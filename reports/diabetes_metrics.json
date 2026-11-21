@@ -1,0 +1,214 @@
+{
+ "meta": {
+  "disease": "diabetes",
+  "disease_name": "Type 2 Diabetes",
+  "dataset": "Pima Indians Diabetes Database (NIDDK/UCI), 768 women aged >= 21 of Pima heritage",
+  "task": "Diabetes diagnosis within 5 years of the baseline examination (binary label as provided)",
+  "selected_model": "gradient_boosting",
+  "selection_rule": "highest 5-fold CV AUROC on the training split",
+  "seed": 42,
+  "threshold": 0.24260262319695694,
+  "threshold_rule": "maximum F1 on validation split (calibrated probabilities)",
+  "calibration": "Platt scaling on validation split",
+  "features": [
+   "Pregnancies",
+   "Glucose",
+   "BloodPressure",
+   "SkinThickness",
+   "Insulin",
+   "BMI",
+   "DiabetesPedigreeFunction",
+   "Age"
+  ],
+  "n_rows": 768,
+  "n_positive": 268,
+  "prevalence": 0.3489583333333333,
+  "split_sizes": {
+   "train": 537,
+   "val": 115,
+   "test": 116
+  },
+  "limitations": [
+   "Only 768 women of a single ancestry: not representative of men or other populations.",
+   "Zeros in glucose, blood pressure, skin-fold, insulin and BMI are physiologically impossible and are treated as missing.",
+   "Small test set (about 115 people): wide confidence intervals."
+  ],
+  "versions": {
+   "python": "3.13.18",
+   "numpy": "2.5.4",
+   "pandas": "2.3.3",
+   "scikit-learn": "1.6.1"
+  },
+  "disclaimer": "Academic prototype. Risk score is NOT a diagnosis and is not clinically validated.",
+  "trained_at": "2026-11-15T18:49:55+00:00",
+  "pipeline_version": "v4.1-phase1",
+  "provenance": {
+   "data_origin": "real_public",
+   "source": "public GitHub mirrors (see per-file URLs)",
+   "recorded_at": "2026-11-15T18:49:48+00:00",
+   "files": {
+    "pima_diabetes.csv": {
+     "sha256": "bf81d06e0c0512662862248241ab46d7c29258c6ceaad32f3cab56b52a17fdab",
+     "url": "https://raw.githubusercontent.com/plotly/datasets/master/diabetes.csv"
+    },
+    "framingham.csv": {
+     "sha256": "def05ef246f93025f0a76fe45b9b6146469eb504492f4a4eeaf1504cf2bff722",
+     "url": "https://raw.githubusercontent.com/GauravPadawe/Framingham-Heart-Study/master/framingham.csv"
+    }
+   },
+   "file": "pima_diabetes.csv",
+   "file_sha256": "bf81d06e0c0512662862248241ab46d7c29258c6ceaad32f3cab56b52a17fdab"
+  },
+  "dataset_check": {
+   "rows": 768,
+   "positives": 268,
+   "expected_rows_positives": [
+    768,
+    268
+   ],
+   "matches_published": true,
+   "warning": null
+  }
+ },
+ "cv_selection": {
+  "logistic_regression": {
+   "cv_auroc_mean": 0.8381771997561472,
+   "cv_auroc_sd": 0.028816949216982017
+  },
+  "random_forest": {
+   "cv_auroc_mean": 0.8335846372688479,
+   "cv_auroc_sd": 0.029722878113410702
+  },
+  "gradient_boosting": {
+   "cv_auroc_mean": 0.841371672424304,
+   "cv_auroc_sd": 0.026940838565762952
+  }
+ },
+ "other_candidates_test": {
+  "logistic_regression": {
+   "test_auroc": 0.8617886178861789,
+   "test_auprc": 0.7838644417292415
+  },
+  "random_forest": {
+   "test_auroc": 0.8504065040650407,
+   "test_auprc": 0.7791544351374916
+  },
+  "gradient_boosting": {
+   "test_auroc": 0.8445528455284553,
+   "test_auprc": 0.7493751981270509
+  }
+ },
+ "results": {
+  "val": {
+   "n_rows": 115,
+   "n_positive_rows": 40,
+   "prevalence": 0.34782608695652173,
+   "auroc": 0.8203333333333332,
+   "auprc": 0.6971310799058889,
+   "auprc_random_baseline": 0.34782608695652173,
+   "threshold": 0.24260262319695694,
+   "precision": 0.582089552238806,
+   "recall": 0.975,
+   "f1": 0.7289719626168224,
+   "confusion_matrix": {
+    "tn": 47,
+    "fp": 28,
+    "fn": 1,
+    "tp": 39
+   },
+   "brier": 0.1652959369090649,
+   "calibration": {
+    "mean_predicted": [
+     0.04743978586772485,
+     0.07486063339406591,
+     0.12586344829911625,
+     0.1750306251718314,
+     0.24923888671634986,
+     0.32200377286158754,
+     0.4186084597052769,
+     0.5517375743462497,
+     0.6866040293864297,
+     0.8216441706588168
+    ],
+    "fraction_positive": [
+     0.08333333333333333,
+     0.0,
+     0.0,
+     0.0,
+     0.5833333333333334,
+     0.45454545454545453,
+     0.45454545454545453,
+     0.4166666666666667,
+     0.6363636363636364,
+     0.8333333333333334
+    ]
+   }
+  },
+  "test": {
+   "n_rows": 116,
+   "n_positive_rows": 41,
+   "prevalence": 0.35344827586206895,
+   "auroc": 0.8445528455284553,
+   "auprc": 0.7493751981270509,
+   "auprc_random_baseline": 0.35344827586206895,
+   "threshold": 0.24260262319695694,
+   "precision": 0.6346153846153846,
+   "recall": 0.8048780487804879,
+   "f1": 0.7096774193548387,
+   "confusion_matrix": {
+    "tn": 56,
+    "fp": 19,
+    "fn": 8,
+    "tp": 33
+   },
+   "brier": 0.1611515436845213,
+   "calibration": {
+    "mean_predicted": [
+     0.04715689198303346,
+     0.06921818178976785,
+     0.09328256336188699,
+     0.12872547558114675,
+     0.181323968778651,
+     0.24550036540696576,
+     0.3492385023476623,
+     0.4529969185754657,
+     0.606937731939776,
+     0.8065057434661035
+    ],
+    "fraction_positive": [
+     0.0,
+     0.0,
+     0.09090909090909091,
+     0.08333333333333333,
+     0.45454545454545453,
+     0.4166666666666667,
+     0.45454545454545453,
+     0.6666666666666666,
+     0.45454545454545453,
+     0.9166666666666666
+    ]
+   },
+   "auroc_ci95": [
+    0.7762124040335477,
+    0.909430735930736
+   ],
+   "auprc_ci95": [
+    0.6262668338358818,
+    0.8555285005822656
+   ]
+  }
+ },
+ "subgroups_test": {
+  "age<50": {
+   "n": 99,
+   "prevalence": 0.3434343434343434,
+   "auroc": 0.8733031674208145
+  },
+  "age>=50": {
+   "n": 17,
+   "prevalence": 0.4117647058823529,
+   "auroc": 0.6857142857142857
+  }
+ },
+ "warnings": []
+}
