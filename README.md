@@ -1,4 +1,4 @@
-# HealthTwin (academic prototype)
+# HealthTwin 
 AI-powered multi-disease Digital Twin with simulated replay monitoring. Not a medical device; not clinically validated.
 
 ## Setup (Windows PowerShell, from project root)
