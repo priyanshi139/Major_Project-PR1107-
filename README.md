@@ -2,7 +2,7 @@
 
 # 🩺 HealthTwin
 
-### AI-powered multi-disease Digital Twin for remote patient monitoring
+### multi-disease Digital Twin for remote patient monitoring
 
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-app-FF4B4B?logo=streamlit&logoColor=white)
@@ -16,8 +16,6 @@
 <img src="docs/assets/healthtwin_poster.png" alt="HealthTwin poster" width="900">
 
 </div>
-
-> 🎓 Final-year B.Tech project. Replay and simulated feeds are always labelled; they are not live patient data.
 
 ---
 
