@@ -2,7 +2,7 @@
 
 # 🩺 HealthTwin
 
-### AI-powered multi-disease Digital Twin for remote patient monitoring
+### multi-disease Digital Twin for remote patient monitoring
 
 ![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-app-FF4B4B?logo=streamlit&logoColor=white)
@@ -13,11 +13,7 @@
 
 🫀 **Sepsis** · 🩸 **Type 2 Diabetes** · ❤️ **Cardiovascular** · 🩺 **Hypertension**
 
-<img src="docs/assets/healthtwin_poster.png" alt="HealthTwin poster" width="900">
-
 </div>
-
-> 🎓 Final-year B.Tech project. Replay and simulated feeds are always labelled; they are not live patient data.
 
 ---
 
@@ -256,15 +252,6 @@ streamlit run app.py
 
 If activation is blocked: `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`
 
-### ☁️ Deploy (Streamlit Community Cloud, free)
-
-1. Push the repo to GitHub.
-2. Open https://share.streamlit.io, sign in with GitHub, click **New app**.
-3. Pick this repo, branch `main`, main file `app.py`. Under *Advanced settings* choose Python 3.11.
-4. Deploy. The app does not need PyTorch; trained models are loaded from `artifacts/`.
-
-On the free cloud the SQLite file resets when the app restarts, so patients added there are temporary.
-
 ---
 
 ## 🖥️ App pages
@@ -304,7 +291,6 @@ Each disease has its own dataset, features, model, calibration, threshold, repor
 python scripts/download_sepsis.py --limit 3000 --workers 8
 python scripts/prepare_sepsis_data.py
 python scripts/train_sepsis.py
-pip install -r requirements-train.txt     # adds PyTorch (only needed for this step)
 python scripts/train_causal_transformer.py --epochs 8 --batch-size 256
 python scripts/train_forecast.py
 python scripts/download_ecg.py
@@ -321,18 +307,7 @@ Everything at once: `scripts/train_all.ps1`.
 Open `colab_train_remaining.ipynb` in Colab, upload the project ZIP, run all cells, download `trained_results.zip`, and merge it into `artifacts/`, `reports/`, `data/processed/`. Then run `python scripts/check_environment.py`.
 </details>
 
-> `scikit-learn` is pinned to **1.6.1** because saved models are pickles; a different version may fail to load them.
-
----
-
-## 🧪 Honesty rules
-
-- ✅ Real data only for "available" models; synthetic runs are shown as **PIPELINE TEST**
-- ✅ Patient-wise splits, no leakage; thresholds chosen on validation, never on test
-- ✅ Simulated and replayed data is always labelled
-- ✅ The agent proposes; a human decides; every decision is audited
-- ❌ No external validation on hospital data
-- ❌ Tabular diseases are cross-sectional estimates, not temporal forecasts
+> `scikit-learn` is pinned to **1.6.1** because saved models are pickles; a different version may fail to load them
 
 ---
 
@@ -360,6 +335,6 @@ More: `docs/platform_guide.md`, `docs/system_architecture.md`, `docs/PROJECT_STA
 
 **Priyanshi Mehta** · B.Tech CSE (AI) · JK Lakshmipat University
 
-*Built to be honest, not just impressive.*
+
 
 </div>
