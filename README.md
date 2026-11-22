@@ -12,6 +12,12 @@
 ![Models](https://img.shields.io/badge/models-6_validated-2dd4bf)
 
 🫀 **Sepsis** · 🩸 **Type 2 Diabetes** · ❤️ **Cardiovascular** · 🩺 **Hypertension**
+## 🚀 Live Demo
+
+Experience HealthTwin here:
+
+🔗 **[HealthTwin – Live Application](https://healthtwin-app.streamlit.app/)**
+
 
 </div>
 
