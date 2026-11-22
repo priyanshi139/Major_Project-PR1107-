@@ -285,7 +285,7 @@ def page_overview():
     with b:
         st.markdown("##### Recent activity")
         ev = svc.store.get_events(limit=8)[::-1]
-        theme.timeline_html([{"event_type": e["event_type"], "title": f"{e['patient_id']}: {e['title']}", "time": e["timestamp"].replace("T", " ") if e["timestamp"] else (f"hour {e['hour']}" if e["hour"] is not None else "-"),
+        _ = theme.timeline_html([{"event_type": e["event_type"], "title": f"{e['patient_id']}: {e['title']}", "time": e["timestamp"].replace("T", " ") if e["timestamp"] else (f"hour {e['hour']}" if e["hour"] is not None else "-"),
                               "source": e["source"]} for e in ev]) if ev else st.write("No activity yet.")
 
 
@@ -643,7 +643,7 @@ def page_timeline():
     st.caption(f"{len(shown)} of {len(ev)} events. Simulated what-if scenarios are marked as such and are never observations.")
     items = [{"event_type": e["event_type"], "title": e["title"], "source": SOURCE_LABELS.get(e["source"], e["source"] or ""),
               "time": (e["timestamp"].replace("T", " ") if e["timestamp"] else (f"hour {e['hour']} (relative)" if e["hour"] is not None else datetime.fromtimestamp(e["wall_time"]).strftime("%Y-%m-%d %H:%M")))} for e in shown]
-    theme.timeline_html(items) if items else st.info("No events match the filters.")
+    _ = theme.timeline_html(items) if items else st.info("No events match the filters.")
     if shown:
         st.download_button("Download timeline (CSV)", pd.DataFrame([{k: e[k] for k in ("event_id", "hour", "timestamp", "event_type", "title", "severity", "source")} for e in shown]).to_csv(index=False),
                            file_name=f"{pid}_timeline.csv", key="dl_timeline")
@@ -736,7 +736,10 @@ def agent_panel():
             pick = st.selectbox("Evidence for", [r["patient_id"] for r in rank], key="agent_ev")
             e = next(r for r in rank if r["patient_id"] == pick)
             st.write(e["narrative"])
-            st.dataframe(pd.DataFrame(e["evidence"]), width="stretch", hide_index=True) if e["evidence"] else st.caption("No evidence items.")
+            if e["evidence"]:
+                st.dataframe(pd.DataFrame(e["evidence"]), width="stretch", hide_index=True)
+            else:
+                st.caption("No evidence items.")
         props = over.proposals(None, "proposed")
         st.markdown(f"**Open proposals ({len(props)})**")
         for q in props:
