@@ -471,12 +471,23 @@ def cached_ecg_record(records_dir, record):
     return load_record(records_dir, record)
 
 
+def ecg_report_table():
+    p = resolve_path(cfg, "reports_dir") / "ecg_metrics.json"
+    if p.exists():
+        rep = json.loads(p.read_text(encoding="utf-8"))
+        st.dataframe(pd.DataFrame([{"model": n, "macro-F1": r["test"]["macro_f1_present_classes"], "balanced acc": r["test"]["balanced_accuracy"]} for n, r in rep["results"].items()]).round(3), width="stretch", hide_index=True)
+    else: st.info("No ECG evaluation report yet. Run `python scripts/train_ecg.py`.")
+
+
+
 def ecg_panel():
     from src.ecg.loader import list_records
     from src.ecg.train import DS1, DS2
     st.caption("A separate record-level module: MIT-BIH recordings are different people from registered patients and are not linked to any patient twin.")
     rdir = resolve_path(cfg, "raw_dir") / cfg["datasets"]["ecg"]["raw_subdir"]; recs = list_records(rdir)
-    if not recs: st.info("No ECG records found. Run `python scripts/download_ecg.py`, then `python scripts/train_ecg.py`."); return
+    if not recs:
+        st.info("ECG recordings are not included in this deployment, so the signal viewer is off. The trained model's evaluation is shown below. To view recordings locally run `python scripts/download_ecg.py`.")
+        ecg_report_table(); return
     rec_id = st.selectbox("Record", recs, key="ecg_rec")
     st.write(f"**ecg:{rec_id}** - " + ("held-out TEST record" if rec_id in DS2 else "training/validation record (not an honest test)" if rec_id in DS1 else "outside the DS1/DS2 split"))
     rec = cached_ecg_record(str(rdir), rec_id); em = assets.get("ecg_model"); res = em.classify_record(rec) if em else None
@@ -490,11 +501,7 @@ def ecg_panel():
         m = (res["samples"] >= i0) & (res["samples"] < i1); bad = m & (res["pred"] != res["true"])
         fig.add_trace(go.Scatter(x=res["samples"][bad] / fs_, y=rec["signal"][res["samples"][bad]], mode="markers", marker=dict(size=14, color="#ef4444", symbol="x"), name="model disagrees"))
     fig.update_layout(height=340, xaxis_title="seconds"); show(fig)
-    p = resolve_path(cfg, "reports_dir") / "ecg_metrics.json"
-    if p.exists():
-        rep = json.loads(p.read_text(encoding="utf-8"))
-        st.dataframe(pd.DataFrame([{"model": n, "macro-F1": r["test"]["macro_f1_present_classes"], "balanced acc": r["test"]["balanced_accuracy"]} for n, r in rep["results"].items()]).round(3), width="stretch", hide_index=True)
-    else: st.info("No ECG evaluation report yet. Run `python scripts/train_ecg.py`.")
+    ecg_report_table()
 
 
 def eval_panel():
@@ -830,7 +837,8 @@ def page_data():
 PAGES = {P_OV: page_overview, P_PATS: page_patients, P_PROF: page_profile, P_TWIN: page_twin, P_LIVE: page_live, P_PRED: page_prediction, P_TIME: page_timeline,
          P_WHAT: page_whatif, P_INS: page_insights, P_ALERT: page_alerts, P_DATA: page_data}
 PAGES[page]()
-theme.footer(DISCLAIMER)
+if page == P_DATA:
+    theme.footer(DISCLAIMER)     # one short note on the Data page instead of every page
 if svc.any_feed_running():            # keep the whole page (sidebar, navigation, data) in sync while a simulated feed runs
     time.sleep(1.2)
     st.rerun()
