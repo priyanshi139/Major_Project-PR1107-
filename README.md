@@ -1,6 +1,13 @@
 <div align="center">
 
 # 🩺 HealthTwin
+## 🚀 Live Demo
+
+Experience HealthTwin here:
+
+🔗 **[HealthTwin – Live Application](https://healthtwin-app.streamlit.app/)**
+
+
 
 ### multi-disease Digital Twin for remote patient monitoring
 
