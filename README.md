@@ -22,6 +22,13 @@ Experience HealthTwin here:
 </div>
 
 ---
+📁 Google Drive Folder:
+https://drive.google.com/drive/folders/15p0HLnMnVc400dNpLMyaImMJ4QQW6TqZ?usp=sharing
+The folder contains the following documents:
+HealthTwin Major Project Presentation (PPT)
+HealthTwin Major Project Final Report
+HealthTwin Final Research Paper
+
 
 ## ✨ What it does
 
